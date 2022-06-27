@@ -4,7 +4,9 @@ import Tabs from "@mui/material/Tabs"
 import Tab from "@mui/material/Tab"
 import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
-import {Login} from '../login/Login'
+import {CreateLogin} from '../login/CreateLogin'
+import { Projects } from "../projects/Projects"
+import { Login } from "../login/Login"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -53,18 +55,22 @@ export const Navigation = () => {
           onChange={handleChange}
           aria-label='basic tabs example'
         >
-          <Tab label='Login Area' {...a11yProps(0)} />
-          <Tab label='Salve Project Area' {...a11yProps(1)} />
-          <Tab label='Grab Project Area' {...a11yProps(2)} />
+          <Tab label='Create Login Area' {...a11yProps(0)} />
+          <Tab label='Login Area' {...a11yProps(1)} />
+          <Tab label='Salve Project Area' {...a11yProps(2)} />
+          <Tab label='Grab Project Area' {...a11yProps(3)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <Login />
+        <CreateLogin />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Salve Project Area
+        <Login />
       </TabPanel>
       <TabPanel value={value} index={2}>
+        <Projects />
+      </TabPanel>
+      <TabPanel value={value} index={3}>
         Grab Project Area
       </TabPanel>
     </Box>

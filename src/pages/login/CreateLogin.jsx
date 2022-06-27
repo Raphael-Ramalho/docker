@@ -14,9 +14,14 @@ import {
   Typography
 } from "@mui/material"
 
-export const Login = () => {
+export const CreateLogin = () => {
+  const [userName, setUserName] = useState()
   const [userEmail, setUserEmail] = useState()
   const [userPassword, setUserPassword] = useState()
+
+  const handleName = (e) => {
+    setUserName(e.target.value)
+  }
 
   const handleEmail = (e) => {
     setUserEmail(e.target.value)
@@ -28,12 +33,7 @@ export const Login = () => {
 
   const handleSubmit = () => {
     const appwrite = new AppWrite()
-    appwrite.createAccountSession(userEmail, userPassword)
-  }
-
-  const handleAccountSession = () => {
-    const appwrite = new AppWrite()
-    appwrite.getAccountSession()
+    appwrite.createAccount(userName, userEmail, userPassword)
   }
 
   return (
@@ -82,6 +82,7 @@ export const Login = () => {
           <Typography
             sx={{
               marginTop: "24px",
+              width: " 325px",
               height: " 40px",
               display: " flex",
               alignItems: "center",
@@ -89,7 +90,7 @@ export const Login = () => {
               color: "#707070"
             }}
           >
-            Insira seu email e senha
+            Para criar o login, insira um nome, e-mail e senha!
           </Typography>
 
           <Box
@@ -99,6 +100,13 @@ export const Login = () => {
             autoComplete='off'
           >
             <div>
+              <TextField
+                sx={{}}
+                required
+                id='outlined-required'
+                label='name'
+                onChange={handleName}
+              />
               <TextField
                 sx={{}}
                 required
@@ -145,6 +153,7 @@ export const Login = () => {
             </Box>
 
             <Button
+              type='submit'
               fullWidth
               variant='contained'
               color='secondary'
@@ -160,25 +169,7 @@ export const Login = () => {
                 alignItems: "center"
               }}
             >
-              Fazer Login
-            </Button>
-            <Button
-              fullWidth
-              variant='contained'
-              color='secondary'
-              onClick={() => handleAccountSession()}
-              sx={{
-                mt: 3,
-                mb: 2,
-                bordeRadius: "4px",
-                padding: "10px, 0px, 10px, 10px",
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
-              Verificar usuário ativo
+              Criar login
             </Button>
             <Box
               component='div'

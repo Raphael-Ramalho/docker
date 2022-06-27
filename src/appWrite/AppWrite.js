@@ -19,6 +19,50 @@ class AppWrite {
         }
       )
   }
+
+  createAccountSession(userEmail, userPassword) {
+    let promise = this.appwrite.account.createSession(userEmail, userPassword)
+
+    promise.then(
+      function (response) {
+        console.log(response) // Success
+      },
+      function (error) {
+        console.log(error) // Failure
+      }
+    )
+  }
+
+  async getAccountSession() {
+    let promise = this.appwrite.account.get()
+
+    promise.then(
+      function (response) {
+        console.log(response) // Success
+      },
+      function (error) {
+        console.log(error) // Failure
+      }
+    )
+  }
+
+  createProject(data) {
+    let promise = this.appwrite.database.createDocument(
+      "projetos",
+      data,
+      ["role:all"],
+      ["role:all"]
+    )
+
+    promise.then(
+      function (response) {
+        console.log(response) // Success
+      },
+      function (error) {
+        console.log(error) // Failure
+      }
+    )
+  }
 }
 
 export default AppWrite
