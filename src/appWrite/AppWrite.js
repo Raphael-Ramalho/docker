@@ -46,12 +46,42 @@ class AppWrite {
     )
   }
 
-  createProject(data) {
+  createProject(projeto, data) {
     let promise = this.appwrite.database.createDocument(
-      "projetos",
-      data,
-      ["role:all"],
-      ["role:all"]
+      "62b9978c83ac6260d51c",
+      projeto,
+      data
+    )
+
+    promise.then(
+      function (response) {
+        console.log(response) // Success
+      },
+      function (error) {
+        console.log(error) // Failure
+      }
+    )
+  }
+
+  listProjects() {
+    let promise = this.appwrite.database.listDocuments("62b9978c83ac6260d51c")
+
+    promise.then(
+      function (response) {
+        console.log(response) // Success
+      },
+      function (error) {
+        console.log(error) // Failure
+      }
+    )
+    return promise
+  }
+
+  savePdf(projeto, file) {
+    let promise = this.appwrite.storage.createFile(
+      "62b9bd5a4d6156aae69c",
+      projeto,
+      file
     )
 
     promise.then(

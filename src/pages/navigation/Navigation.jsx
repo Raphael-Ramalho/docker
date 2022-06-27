@@ -2,11 +2,11 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import Tabs from "@mui/material/Tabs"
 import Tab from "@mui/material/Tab"
-import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
-import {CreateLogin} from '../login/CreateLogin'
+import { CreateLogin } from "../login/CreateLogin"
 import { Projects } from "../projects/Projects"
 import { Login } from "../login/Login"
+import { ProjectList } from "../projectList/ProjectList"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -19,11 +19,7 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   )
 }
@@ -48,17 +44,35 @@ export const Navigation = () => {
     setValue(newValue)
   }
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+    <Box sx={{ width: "100%", height: "100vh", backgroundColor: "#d580bc" }}>
+      <Box
+        sx={{
+          borderBottom: 1,
+          borderColor: "divider",
+          backgroundColor: "#000000"
+        }}
+      >
         <Tabs
           value={value}
           onChange={handleChange}
           aria-label='basic tabs example'
         >
-          <Tab label='Create Login Area' {...a11yProps(0)} />
-          <Tab label='Login Area' {...a11yProps(1)} />
-          <Tab label='Salve Project Area' {...a11yProps(2)} />
-          <Tab label='Grab Project Area' {...a11yProps(3)} />
+          <Tab
+            label='Create Login'
+            {...a11yProps(0)}
+            style={{ color: "white" }}
+          />
+          <Tab label='Login' {...a11yProps(1)} style={{ color: "white" }} />
+          <Tab
+            label='Create Project'
+            {...a11yProps(2)}
+            style={{ color: "white" }}
+          />
+          <Tab
+            label='Project list'
+            {...a11yProps(3)}
+            style={{ color: "white" }}
+          />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -71,7 +85,7 @@ export const Navigation = () => {
         <Projects />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Grab Project Area
+        <ProjectList />
       </TabPanel>
     </Box>
   )
