@@ -77,10 +77,10 @@ class AppWrite {
     return promise
   }
 
-  savePdf(projeto, file) {
+  savePdf(fileId, file) {
     let promise = this.appwrite.storage.createFile(
       "62b9bd5a4d6156aae69c",
-      projeto,
+      fileId,
       file
     )
 
@@ -92,6 +92,15 @@ class AppWrite {
         console.log(error) // Failure
       }
     )
+  }
+
+  getPdfView(fileId) {
+    let result = this.appwrite.storage.getFileView(
+      "62b9bd5a4d6156aae69c",
+      fileId
+    )
+
+    return result
   }
 }
 
