@@ -24,7 +24,8 @@ export const ProjectList = () => {
         style={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "space-around"
+          justifyContent: "space-around",
+          flexWrap:'wrap'
         }}
       >
         {allProjects &&
@@ -37,6 +38,7 @@ export const ProjectList = () => {
                   display: "flex",
                   flexDirection: "column",
                   width: "25%",
+                  marginBottom:'30px', 
                   padding: "30px",
                   borderRadius: "16px",
                   border: "border: 1px solid #DBDBDB",
